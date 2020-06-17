@@ -77,7 +77,7 @@
            bar: {
             showDelay: 500,
             onlyShowBarOnScroll: true,
-            keepShow: false,
+            keepShow: true,
             background: '#fff',
             opacity: 0.4,
           } 

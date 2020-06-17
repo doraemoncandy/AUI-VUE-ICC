@@ -23,7 +23,8 @@ $config-table-wd:(
     'lg': 200px,
     'md': 151px,
     'sm': 120px,
-    'xs': 55px
+    'xs': 55px,
+    'base': 80px
 );
 
 // color: link dot
@@ -141,7 +142,7 @@ $color-style02-grey:  #51596b; // 用於第二類型的table樣式
         height: $tcotent-min-height;
         box-sizing: border-box;
         padding: 10px;
-        min-width: 80px;
+        min-width: map-get($config-table-wd, base);
         line-height: 1.5;
         word-break: break-word;
         &.align-center{
@@ -152,6 +153,7 @@ $color-style02-grey:  #51596b; // 用於第二類型的table樣式
         }
 
         @media(max-width: $screen-pad){
+            padding: 10px 6px;
             font-size: map-get($config-table, font-size-mobile);
         }
 
@@ -249,6 +251,14 @@ $color-style02-grey:  #51596b; // 用於第二類型的table樣式
                    text-align:left;
                 }
             }
+            th{
+                &:first-of-type{
+                
+                    min-width: map-get($config-table-wd, base);
+                    width:100%;
+                }    
+            }
+            
         }
         // end of has checkbox
     } // end: style--no-data
