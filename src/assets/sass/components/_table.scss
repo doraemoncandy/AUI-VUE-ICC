@@ -1,0 +1,290 @@
+$th-line-wd: 1px; // th 間隔的寬度
+$tcotent-min-height: 56px; // th, td最小高度
+$t-link-dot-size: 10px; // link dot size
+
+$config-table:(
+    'font-size-pc': $font-size-h7,
+    'font-size-mobile': $font-size-h9,
+    'bg-tr-odd': #26282e,
+    'bg-tr-even': #292b31
+);
+
+// whole table width
+$config-table-whole-wd:(
+    'xlg': 1000px,
+    'lg': 800px,
+    'base': 600px,
+    'sm': 500px
+);
+
+// column width 
+$config-table-wd:(
+    'xlg':276px,
+    'lg': 200px,
+    'md': 151px,
+    'sm': 120px,
+    'xs': 55px
+);
+
+// color: link dot
+$config-color-status:(
+    // dot color
+    'online': $color-online,
+    'offline': $color-offline,
+    
+);
+// color text color
+$config-color-text:(
+    //color number
+    'level4': $color-online,
+    'level3': $color-focus,
+    'level2': $color-offline,
+    'level1': $color-grey-dark
+);
+
+$color-table-disable: #5e616d;
+$color-style02-grey:  #51596b; // 用於第二類型的table樣式
+
+.cp-table{
+    // 01. latyout style
+    color: $color-white;
+    border: none;
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+    border-spacing: 0;
+    @media(max-width: $screen-pad-h){
+        table-layout: fixed;
+        min-width: map-get($config-table-whole-wd, base);  
+        @each $name, $val in $config-table-whole-wd{
+            &.wd-#{$name}{
+                 min-width: $val;
+             }
+        } //each
+    } // media
+
+    
+    th{
+        background-color: $color-dark;
+        position: relative;
+        border: none;
+        color: $color-grey;
+        border-bottom: 1px solid $color-main-dark;
+        &:before{
+            content: ' ';
+            display: inline-block;
+            width:  $th-line-wd;
+            height: 60%;
+            position: absolute;
+            background-color: $color-main-dark;
+            left: -1 * $th-line-wd;
+            top: 50%;
+            transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            
+        }
+
+        // for some specific column width style (width only in notebook and pc version, column of width in mobile will become equal)
+        @media(min-width: $screen-sm-than-pad-h){
+            @each $name, $val in $config-table-wd {
+                &.wd-#{$name}{
+                    min-width: map-get($config-table-wd, $name);
+                }
+            }
+        }
+        // column of width in mobile will become equal
+        @media(max-width:$screen-pad-h){
+            width: 100%; // let every column equal width
+        }
+        
+        
+    }
+    tbody{
+        tr{
+            &:nth-child(odd) {
+                background: map-get($config-table, bg-tr-odd);
+            }
+            &:nth-child(even) {
+                background: map-get($config-table, bg-tr-even);
+            }
+            &:hover, &:focus{
+                background-color: $color-main;
+            }
+            // status disable
+            &.disable{
+                color: $color-table-disable;
+                pointer-events: none;
+                cursor: not-allowed;
+                // td color disable
+                td{
+                    &[class*="color-"]{
+                        color:$color-table-disable;
+                    }
+                }
+                // link disable color
+                .t-link{
+                    color: $color-table-disable;
+                    &.style--has-dot{
+                        &[class*="color-"]{
+                            &:before{
+                                background-color: $color-table-disable;
+                            }
+                        } //end: color-
+                    }// end: style--has-dot
+                }//end: t-link
+            } //end: disable
+        }
+    } //end: tbody
+    
+    th, td{
+        font-size: map-get($config-table, font-size-pc);
+        height: $tcotent-min-height;
+        box-sizing: border-box;
+        padding: 10px;
+        min-width: 80px;
+        line-height: 1.5;
+        word-break: break-word;
+        &.align-center{
+            text-align:center;
+        }
+        &.align-right{
+            text-align: right;
+        }
+
+        @media(max-width: $screen-pad){
+            font-size: map-get($config-table, font-size-mobile);
+        }
+
+    } //end: th, td
+
+
+
+    // 02. content style
+
+    // link & has dot
+    .t-link{
+        position: relative;
+        color: $color-white;
+        box-sizing: border-box;
+        display: inline-block;
+        vertical-align: top;
+        width: 100%;
+        .t-link-text{
+            text-decoration: underline;
+        }
+        // link text
+        &.style--has-dot{
+            padding-left: calc(#{$t-link-dot-size} + 15px);
+            .t-link-text{
+                display: inline-block;
+                width: calc(100% - #{$t-link-dot-size} - 15px);
+                text-align: left;
+            }
+            $font-size-pc: map-get($config-table, font-size-pc);
+            $font-size-mobile: map-get($config-table, font-size-pc);
+            &:before{
+                content: ' ';
+                display: inline-block;
+                width: $t-link-dot-size;
+                height: $t-link-dot-size;
+                position: absolute;
+                border-radius: 50%;
+                left: 0;
+                top: calc( (#{$font-size-pc}/2) - (#{$t-link-dot-size}/2) + 4px); 
+                vertical-align: top;
+                @media(max-width:$screen-pad){
+                    top: calc( (#{$font-size-mobile}/2) - (#{$t-link-dot-size}/2) + 1px); 
+                }
+            }
+
+            // dot color (online/ offline)
+            @each $name, $val in $config-color-status{
+                &.color-#{$name}{
+                    &:before{
+                        background-color: $val;
+                    }
+                } //end: color
+            } //end: each
+
+        } //end: style-has-dot
+
+        &.style--no-link{
+            pointer-events: none;
+            cursor: default;
+            .t-link-text{
+                text-decoration: none;
+            }
+        } //end: style-no-link
+        
+    } //end: t-link-dot
+
+    // text color
+    td{
+        @each $name, $val in $config-color-text{
+            &.color-#{$name}{
+                color: $val;
+            }
+        } //end: each
+    } //end: td
+    // end: text color
+
+    // 03. status no data
+    &.style--no-data{
+        @media(max-width: $screen-sm-than-pad){
+            min-width: 100%;
+        }
+        tbody{
+            tr{
+                &:hover, &:focus{
+                    background: map-get($config-table, bg-tr-odd);
+                }
+            }// end: tr
+        } // end: tbody
+
+        // has checkbox style
+        &.style--has-checkbox{
+            // checkbox width
+            th, td{
+                &:first-of-type{
+                   text-align:left;
+                }
+            }
+        }
+        // end of has checkbox
+    } // end: style--no-data
+
+    // 04. other style
+    &.style--01{
+        th{
+            border-bottom: none;
+            &:before{
+                background-color: #686f79;
+            }
+        }
+    }
+    &.style--02{
+        th{
+            background: map-get($config-table, bg-tr-odd);
+            border-bottom-color: $color-style02-grey;
+            &:before{
+                background-color: $color-style02-grey;
+            }
+        }
+    }
+    &.style--has-checkbox{
+        // checkbox width
+        th, td{
+            &:first-of-type{
+                min-width: map-get($config-table-wd, xs);
+                width: map-get($config-table-wd, xs);
+                text-align: center;
+            }
+        }
+    }
+    @media(max-width: $screen-sm-than-pad){
+        &.style--wd-full{
+            min-width: 100%;
+        }
+    }
+    
+} // end: cp-table

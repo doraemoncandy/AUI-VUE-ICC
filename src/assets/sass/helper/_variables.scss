@@ -1,0 +1,43 @@
+// 01. color
+
+// 01-1 global color
+$color-main: #036c83;
+$color-main-dark: #0A6175;
+$color-sub:  #3490dc;
+$color-sub-light: #00d0ff;
+$color-dark: #141519;
+$color-grey: #7e8886;
+$color-grey-dark: #5e616d;
+$color-white: #FFF;
+
+// 01-2 functoin color
+$color-online: #2fcfbd;
+$color-offline: #ff4071;
+$color-focus: #f5ff80;
+
+
+
+$color-bg-main: linear-gradient(148deg,#2f3239 0,#0e0f14 57%);
+
+
+// font
+$base: 16;
+
+$font-size-h7:   (15 / $base) * 1rem; // 15px
+$font-size-h8:  (14 / $base) * 1rem; // 14px;
+$font-size-h9:   (13 / $base) * 1rem; // 13px
+$font-size-h10:   (12 / $base) * 1rem; // 12px
+
+// screen size
+$screen-lg-than-pad-h: 1025px;
+$screen-pad-h: 1024px;
+$screen-sm-than-pad-h: 1023px;
+$screen-lg-than-pad: 769px;
+$screen-pad: 768px;
+$screen-sm-than-pad: 767px;
+$screen-lg-than-mobile: 376px;
+$screen-mobile: 375px;
+$screen-sm-than-mobile: 374px;
+
+
+

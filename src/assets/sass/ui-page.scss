@@ -1,0 +1,31 @@
+@import 'helper/variables';
+
+#app {
+    font-family: Avenir, Helvetica, Arial, '微軟正黑體', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 60px;
+}
+.ui-page{
+
+    // ui title style
+    .ui-title{
+        font-size: 18px;
+        color: #036c83;
+        letter-spacing: 3.3px;
+        margin-top: 50px;
+        margin-bottom: 30px;
+        text-align: left;
+    } // end: title
+
+    .ui-title--sub{
+        font-size: 16px;
+        letter-spacing: 2.2px;
+        margin-bottom: 10px;
+        text-align: left;
+    }
+
+
+}// end: ui-page
