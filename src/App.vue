@@ -3,6 +3,15 @@
     <div class="title-block">
       <h2>UICC UI Page</h2>
     </div>
+    <!-- temp button -->
+    <div class="websocket-block">
+      <input type="text" v-model="inputVal"/>
+      <button @click="sendMessage(inputVal)">send msg</button>
+      <button @click="disconnet()">disconnect</button>
+      <h5>Data From Server: {{ dataFromServer }}</h5>
+    </div>
+    <!-- end of temp button -->
+    
     <!-- table Layout-->
     <h3 class="ui-title">Table: 上下標題，小版滑動 </h3>
     <h5 class="ui-title--sub">STYLE00 - 藍線</h5>
@@ -92,7 +101,7 @@
           </t-td>
           <t-td>t-content {{index}}</t-td>
           <t-td>t-content {{index}}</t-td>
-           <t-td>t-content {{index}}</t-td>
+          <t-td>t-content {{index}}</t-td>
         </t-tr>
       </template>
     </t-table>
@@ -234,6 +243,56 @@ export default {
     tTr
     
   },
+  data: function(){
+    return {
+      connection: null,
+      inputVal: '',
+      dataFromServer: 'test'
+    }
+  },// end: data
+  methods: {
+    sendMessage: function sendMessage(message) {
+      console.log(this.connection);
+      this.connection.send(message);
+    },
+    disconnet: function disconnet(){
+      console.log('in disconnect');
+      this.connection.close();
+    }
+  },
+  created: function(){
+    var _self = this;
+    // this.connection = new WebSocket("wss://echo.websocket.org")
+    this.connection = new WebSocket("ws://localhost:3000");
+    
+    // 連接建立時
+    this.connection.onopen = function(event){
+      console.log(event)
+      console.log("Successfully connected to the echo websocket server...")
+    }
+
+    // client 收到 server時
+    this.connection.onmessage = function(event) {
+      console.log('==== on msg ====');
+      console.log(event);
+      console.log('data:', event.data);
+      _self.dataFromServer = event.data;
+      console.log('data from server', _self.dataFromServer);
+    }
+
+    // 通訊發生錯誤的時候
+    this.connection.error = function(event){
+      console.log('==== on error ====');
+      console.log(event);
+    }
+
+    // 通訊關閉的時候
+    this.connection.close = function(){
+      console.log('=== on close ===' + this.readyState);
+    }
+
+    // 
+  } // end: create
   
 
 }
