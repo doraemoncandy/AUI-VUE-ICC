@@ -1,6 +1,6 @@
 <template lang="html">
   <vuescroll :ops="settingScrollbar">
-    <table class="cp-table" :class="['wd-'+ sizeTable, {'style--wd-full': isWdFull}, {'style--no-data': isEmpty}, 'style--'+tableStyle, {'style--has-checkbox':isCheckbox}]" cellspacing="0" cellpadding="0">
+    <table class="cp-table" :class="[('wd-'+ sizeTable), {'style--wd-full': isWdFull}, {'style--no-data': isEmpty}, 'style--'+tableStyle, {'style--has-checkbox':isCheckbox}]" cellspacing="0" cellpadding="0">
       <thead>
         <slot name="thead"></slot>
       </thead> 
@@ -54,7 +54,7 @@
         default: false
       },
       isWdFull:{  // 小版是否等比縮
-        type: Boolean,
+        //type: Boolean,
         default: false
       },
       sizeTable:{  // 整個table的size (在小版的時候)，預設800px

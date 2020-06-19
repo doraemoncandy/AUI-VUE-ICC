@@ -10,7 +10,8 @@
       <button @click="disconnet()">disconnect</button>
       <h5>Data From Server: {{ dataFromServer }}</h5>
     </div>
-    <!-- temp button -->
+    <!-- end of temp button -->
+    
     <!-- table Layout-->
     <h3 class="ui-title">Table: 上下標題，小版滑動 </h3>
     <h5 class="ui-title--sub">STYLE00 - 藍線</h5>
@@ -263,6 +264,7 @@ export default {
     var _self = this;
     // this.connection = new WebSocket("wss://echo.websocket.org")
     this.connection = new WebSocket("ws://192.168.50.145:3000");
+    // this.connection = new WebSocket("ws://localhost:3000");
     
     // 連接建立時
     this.connection.onopen = function(event){
