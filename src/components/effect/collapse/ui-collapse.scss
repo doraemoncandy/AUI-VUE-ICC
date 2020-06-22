@@ -1,0 +1,11 @@
+.cp-collapse {
+    .collapse-{
+
+        &enter-active,
+        &leave-active {
+        overflow: hidden;
+        transition: height .5s linear;
+        }
+        
+    }
+}
