@@ -24,6 +24,22 @@
     </div> -->
     <!-- end of sidebar -->
     <div class="ui-layout-content">
+        <!-- modal -->
+        <h3 class="ui-title">Modal </h3>
+        <button @click="isModalBasicOpen = true">開Modal</button>
+        <ui-modal-basic :is-show-close="true" :is-open="isModalBasicOpen" @on-is-open-change="onIsOpenChange">
+          <template v-slot:header>標題標題標題</template>
+          <template v-slot:content>
+            <div class="content-block">
+              內容內容內容內容
+              <div style="min-height: 650px;"></div>
+            </div>
+          </template>
+          <template v-slot:footer>
+            <button @click="onClickModalBtn()"> 關掉POPUP</button>
+          </template>
+        </ui-modal-basic>
+        <!-- end of modal -->
         <!-- collapse -->
         <h3 class="ui-title">收合 </h3>
         <ui-collapse :is-collapse="true">
@@ -265,6 +281,7 @@ import tTh from './components/ui/TableTh';
 import tTd from './components/ui/TableTd';
 import tTr from './components/ui/TableTr';
 import UiCollapse from './components/effect/collapse';
+import UiModalBasic from './components/ui/ui-modal-basic';
 
 export default {
   name: 'App',
@@ -274,14 +291,15 @@ export default {
     tTh,
     tTd,
     tTr,
-    UiCollapse
-    
+    UiCollapse,
+    UiModalBasic
   },
   data: function(){
     return {
       connection: null,
       inputVal: '',
-      dataFromServer: 'test'
+      dataFromServer: 'test',
+      isModalBasicOpen: true
     }
   },// end: data
   methods: {
@@ -292,6 +310,12 @@ export default {
     disconnet: function disconnet(){
       console.log('in disconnect');
       this.connection.close();
+    },
+    onIsOpenChange(val){
+      this.isModalBasicOpen = val;
+    },
+    onClickModalBtn(){
+      this.isModalBasicOpen = false;
     }
   },
   created: function(){
