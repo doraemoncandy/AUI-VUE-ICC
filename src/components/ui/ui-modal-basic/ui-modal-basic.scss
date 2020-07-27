@@ -11,7 +11,7 @@ $config-z-index:(
 $config-wd:(
     'sm': 500px,
     'md': 600px,
-    'lg': 750px
+    'lg': 800px
 );
 .ui-modal-basic {
     position: fixed;
@@ -54,7 +54,7 @@ $config-wd:(
         left: 0;
         right: 0;
         margin: 0 auto;
-        top: 150px;
+        top: 100px;
         display: flex;
         justify-content: center;
         @each $name, $val in $config-wd{
@@ -68,7 +68,7 @@ $config-wd:(
         max-width: map-get($config-wd, sm);
         width: 100%;
         z-index: map-get($config-z-index, modal-content);
-        max-height: 400px;
+        max-height: 600px;
         display: flex;
         flex-direction: column;
         box-sizing: border-box;

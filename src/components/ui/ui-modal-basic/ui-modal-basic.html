@@ -10,9 +10,11 @@
               <span class="icon-close-line"></span>
             </a>
           </div>
-          <div class="modal-content">
-            <slot name="content"></slot>
-          </div>
+          <vuescroll :ops="scrollbarStyle">
+            <div class="modal-content">
+                <slot name="content"></slot>
+            </div>
+          </vuescroll>
           <div class="modal-footer">
             <slot name="footer"></slot>
           </div>
