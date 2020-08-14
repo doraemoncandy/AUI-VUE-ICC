@@ -1,0 +1,14 @@
+.cp-collapse {
+    &.style--accordion-item{
+        .collapse-{
+            &enter-active,
+            &leave-active {
+                overflow: hidden;
+                transition: height .3s ease-out;
+            }
+        }
+        .collapse-trigger-block{
+            cursor: pointer;
+        }
+    }
+}
