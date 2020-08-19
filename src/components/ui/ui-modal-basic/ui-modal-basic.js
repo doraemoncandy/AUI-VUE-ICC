@@ -69,7 +69,7 @@ export default {
       this.$emit('on-is-open-change', this._isOpen);
     },
     handleModal(isOpen){
-      console.log('isOpen', isOpen);
+      //console.log('isOpen', isOpen);
       var _isOpenModal = isOpen;
       if(_isOpenModal){
         document.body.classList.add('style--fixed');

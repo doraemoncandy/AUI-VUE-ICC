@@ -1,0 +1,83 @@
+@import 'helper/variables';
+$config-breadcrumb:(
+    color-current: $color-sub-light,
+    color-prev: $color-white,
+    color-arrow: $color-grey-light,
+    font-size: $font-size-h4-5,
+    font-size-sm: $font-size-h9,
+    size-arrow: $font-size-h4-5,
+    size-arrow-sm: $font-size-h10,
+    size-space-arrow: 30px,
+    size-space-arrow-sm: 20px
+);
+.ui-layout-breadcrumb {
+    .layout-breadcrumb-block{
+        display: inline-block;
+        width: 100%;
+        padding: 0;
+        text-align: left;
+        list-style-type: none;
+        font-weight: bold;
+        line-height: normal;
+        .breadcrumb-item-block{
+            display: inline;
+            position: relative;
+            font-size: map-get($config-breadcrumb, font-size);
+            
+            .item-text{
+                color: map-get($config-breadcrumb, color-prev);
+                text-decoration: none;
+                font-weight: bold;
+                &:hover{
+                    text-decoration: underline;
+                }
+                // 沒有連結的時候
+                &.no-link{
+                    cursor: default;
+                    pointer-events: none;
+                    &:hover{
+                        text-decoration: none;
+                    } // end: hover
+                } // end: no-link
+            }
+            &:after{
+                content: '>';
+                display: inline-block;
+                text-align: center;
+                right: calc( #{map-get($config-breadcrumb, size-space-arrow)} * -1 + #{map-get($config-breadcrumb, size-arrow)/2} - 2px );
+                margin: 0 auto;
+                position: absolute;
+                bottom: 0; // if text too long, so use bottom to align
+                color: map-get($config-breadcrumb, color-arrow);
+                font-size: map-get($config-breadcrumb, size-arrow);
+            } // end: after
+            &:last-of-type{
+                .item-text{
+                    color: map-get($config-breadcrumb, color-current);
+                    cursor: default;
+                    &:hover{
+                        text-decoration: none;
+                    } // end: hover
+                } // end: item-text
+                &:after{
+                    display: none;
+                }
+                
+            } // end: last-of-type
+            + .breadcrumb-item-block{
+                padding-left: map-get($config-breadcrumb, size-space-arrow);
+            }
+            @media(max-width: $screen-sm-than-pad){
+                font-size: map-get($config-breadcrumb, font-size-sm);
+                &:after{
+                    font-size: map-get($config-breadcrumb, size-arrow-sm);
+                    right: calc( #{map-get($config-breadcrumb, size-space-arrow-sm)} * -1 + #{map-get($config-breadcrumb, size-arrow-sm)/2} - 1px );
+                }
+                + .breadcrumb-item-block{
+                    padding-left: map-get($config-breadcrumb, size-space-arrow-sm);
+                }
+
+            } // end: screen-sm-than-pad
+        } // end: breadcrumb-item-block
+    } // end: layout-breadcrumb-block
+}

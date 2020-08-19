@@ -1,0 +1,21 @@
+
+
+
+<div class="ui-select select-block" v-click-outside="onClickOutsideSelect" :class="'select--'+ type">
+  <div class="select-native-block">
+      <select name="" id="" v-model="privateValue">
+        <option :value="'default'" v-if="isShowDefaultOption">{{defaultText}}</option>
+        <option v-for="(data, index) in options" :value="data.value">{{data.name}}</option>
+      </select>
+  </div>
+  <div class="select-customize-block" :class="{'active': isOpen}">
+    <div class="selected-item-block" @click="onClickDropdown($event)" >
+      {{selected}}
+    </div>
+    <ul class="select-dropdown-block">
+      <li v-show="isShowDefaultOption && !isSeletedHideDefaultOption" class="option-item option-item-default" :value="'default'" @click="onClickOption('default')">{{defaultText}}</li>
+      <li class="option-item" v-for="(data, index) in options" :value="data.value"  @click="onClickOption(data.value)">{{data.name}}</li>
+    </ul>
+  </div>
+  
+</div>

@@ -6,27 +6,40 @@ $color-main-dark: #0A6175;
 $color-sub:  #3490dc;
 $color-sub-light: #00d0ff;
 $color-dark: #141519;
+$color-form-sub: #373b44;
 $color-grey: #7e8886;
 $color-grey-dark: #5e616d;
 $color-white: #FFF;
+$color-bg-grey: #272a31;
+$color-grey-light: #a6adae;
 
 // 01-2 functoin color
 $color-online: #2fcfbd;
 $color-offline: #ff4071;
 $color-focus: #f5ff80;
+$color-updatetime: #585d6d;
+$color-error: #ff1f1f;
+
 
 
 
 $color-bg-main: linear-gradient(148deg,#2f3239 0,#0e0f14 57%);
 
 
-// font
+
+
+
+// 02. font 
 $base: 16;
 
+$font-size-h4-5: (21 / $base) * 1rem; // 21px
+$font-size-h5:   (20 / $base) * 1rem; // 20px
+$font-size-h6:   (18 / $base) * 1rem; // 18px
+$fonf-size-base: (16 / $base) * 1rem; // 16px
 $font-size-h7:   (15 / $base) * 1rem; // 15px
-$font-size-h8:  (14 / $base) * 1rem; // 14px;
+$font-size-h8:   (14 / $base) * 1rem; // 14px;
 $font-size-h9:   (13 / $base) * 1rem; // 13px
-$font-size-h10:   (12 / $base) * 1rem; // 12px
+$font-size-h10:  (12 / $base) * 1rem; // 12px
 
 // screen size
 $screen-lg-than-pad-h: 1025px;

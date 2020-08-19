@@ -1,0 +1,140 @@
+@import 'helper/variables';
+@import 'helper/mixins';
+$config-select:(
+    font-size: $font-size-h7,
+    height-select: 34px,
+    color-arraow: #6b6b6b,
+    color-bg-select: #1f2127,
+    color-bg-select-hover: #2b2f37,
+    color-border: #6b6b6b,
+    color-text: #fff,
+    height-arraow: 7px,
+    space-left: 13px,
+    space-right: 20px,
+);
+$config-select-style2:(
+    border-radius: 5px,
+    color-bg-select-selected: #373b44,
+    color-bg-select: #373b44,
+    color-bg-select-hover: $color-main,
+);
+.ui-select{
+    position: relative;
+    text-align: left;
+    // native block
+    .select-native-block{
+        display: none;
+    } 
+
+    // customize style
+    .select-customize-block{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        position: relative;
+        font-size: map-get($config-select, font-size);
+        color: map-get($config-select, color-text);
+        .selected-item-block{
+            width: 100%;
+            cursor: pointer;
+            height: map-get($config-select, height-select);
+            line-height: map-get($config-select, height-select);
+            width: 100%;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            display: inline-block;
+            text-align: center;
+            padding: 0 map-get($config-select, space-right) 0 map-get($config-select, space-left);
+            background-color: map-get($config-select, color-bg-select);
+            border: 1px solid map-get($config-select, color-border);
+            transition: all .8s;
+            &:after{
+                content: ' ';
+                @include triangleDownFlat(map-get($config-select, height-arraow), map-get($config-select, color-arraow), transparent);
+                position: absolute;
+                right: 10px;
+                top: 50%;
+                transform: translateY(-50%);
+                -ms-transform: translateY(-50%);
+            }
+        }
+        .select-dropdown-block{
+            border: 1px solid map-get($config-select, color-border);
+            border-top: none;
+            list-style-type: none;
+            padding: 0;
+            display: none;
+            position: absolute;
+            z-index: 2;
+            top: map-get($config-select, height-select);
+            background-color: $color-white;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            text-align: center;
+            max-height: map-get($config-select, height-select) * 6;
+            overflow-y: auto;
+            background-color: map-get($config-select, color-bg-select);
+
+        } // end: select-dropdown-block
+        .option-item{
+            cursor: pointer;
+            min-height: map-get($config-select, height-select);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px 0;
+            box-sizing: border-box;
+            &:hover{
+                background-color: map-get($config-select, color-bg-select-hover);
+            }
+        }
+
+        // acitve
+        &.active{
+            .selected-item-block{
+                &:after{
+                    @include triangleTopFlat(map-get($config-select, height-arraow), map-get($config-select, color-arraow), transparent);
+                }
+            }
+            .select-dropdown-block{
+                display: inline-block;
+                
+            }
+           
+        }// end: active
+
+    } // end: select-customize-block
+
+    // other type style2
+    &.select--style2{
+        .select-customize-block{
+            .selected-item-block{
+                border: none;
+                transition: none;
+                border-radius: map-get($config-select-style2, border-radius);
+                background-color: map-get($config-select-style2, color-bg-select-selected);
+            }
+            .select-dropdown-block{
+                border: none;
+                background-color: map-get($config-select-style2, color-bg-select);
+    
+            } // end: select-dropdown-block
+            .option-item{
+                &:hover{
+                    background-color: map-get($config-select-style2, color-bg-select-hover);
+                }
+            }
+
+            &.active{
+                .selected-item-block{
+                    border-radius:  map-get($config-select-style2, border-radius)  map-get($config-select-style2, border-radius) 0 0;
+                }
+            }
+
+        }
+    } // end: select--style2
+
+    // style3
+}
