@@ -25,20 +25,6 @@ export default {
         ]
       } // end: default
     }
-  },
-  data () {
-    return {
-
-    }
-  },
-  computed: {
-
-  },
-  mounted () {
-
-  },
-  methods: {
-
   }
 }
 

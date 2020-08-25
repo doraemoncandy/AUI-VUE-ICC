@@ -1,9 +1,9 @@
 
 <div class="ui-layout-breadcrumb">
-  <ui class="layout-breadcrumb-block">
+  <ul class="layout-breadcrumb-block">
     <li class="breadcrumb-item-block" v-for="(item, index) in datas" :key="index" :class="{'style--last': index === (datas.length - 1)}">
       <a :href="item.link" class="item-text" :class="{'no-link': !item.isLink}">{{item.name}}</a>
     </li>
-  </ui>
+  </ul>
 </div>
 

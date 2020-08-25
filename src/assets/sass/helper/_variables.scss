@@ -42,6 +42,14 @@ $font-size-h9:   (13 / $base) * 1rem; // 13px
 $font-size-h10:  (12 / $base) * 1rem; // 12px
 
 // screen size
+$screen-pc-lg: 1456px;
+$screen-sm-than-pc-lg: 1455px;
+$screen-lg-than-nb: 1367px;
+$screen-nb: 1366px;
+$screen-sm-than-nb: 1365px;
+$screen-lg-than-pc: 1201px;
+$screen-pc: 1200px;
+$screen-sm-than-pc: 1199px;
 $screen-lg-than-pad-h: 1025px;
 $screen-pad-h: 1024px;
 $screen-sm-than-pad-h: 1023px;
@@ -51,6 +59,10 @@ $screen-sm-than-pad: 767px;
 $screen-lg-than-mobile: 376px;
 $screen-mobile: 375px;
 $screen-sm-than-mobile: 374px;
+
+
+
+
 
 
 

@@ -1,8 +1,16 @@
+<style>
+html, body{
+  margin: 0;
+  padding: 0;
+}
+</style>
 <template>
   <div id="app" class="ui-page">
     <div class="title-block">
-      <h2>UICC UI Page</h2>
+      <h2>WebSocket Test Page</h2>
     </div>
+
+    
     <!-- temp button -->
     <div class="websocket-block">
       <input type="text" v-model="inputVal"/>
@@ -11,6 +19,8 @@
       <h5>Data From Server: {{ dataFromServer }}</h5>
     </div>
     <!-- end of temp button -->
+
+
     <!-- sidebar -->
     <!-- <div class="ui-layout-sidebar">
       <ul class="ui-sidebar-list-block">
@@ -23,7 +33,106 @@
       </ul>
     </div> -->
     <!-- end of sidebar -->
-    <div class="ui-layout-content">
+    <div class="ui-layout-content bg-color-main">
+
+        <!-- list -->
+        <h3 class="ui-title">List </h3>
+        <h6 class="ui-title--white">column: 2</h6>
+        <ui-list-container :title="listTitle" :column="2">
+          <ui-list-item>
+            <div>測試測試測試測1</div>
+          </ui-list-item>
+          <ui-list-item>
+            <h6>測試測試測試測2</h6>
+          </ui-list-item>
+          <ui-list-item>
+            <a :href="testLink" target="_blank" style="color:white">Test Link</a>
+          </ui-list-item>
+          <ui-list-item>
+            <a :href="testLink" target="_blank" style="color:white">Test Link</a>
+          </ui-list-item>
+          <ui-list-item>
+            <a :href="testLink" target="_blank" style="color:white">Test Link</a>
+          </ui-list-item>
+          <ui-list-item>
+            <a :href="testLink" target="_blank" style="color:white">Test Link</a>
+          </ui-list-item>
+          <ui-list-item>
+            <a :href="testLink" target="_blank" style="color:white">Test Link</a>
+          </ui-list-item>
+          
+        </ui-list-container>
+
+        <h6 class="ui-title--white">column: 1</h6>
+          <ui-list-container :title="listTitle" >
+          <ui-list-item>
+            <div>測試測試測試測1</div>
+          </ui-list-item>
+          <ui-list-item>
+            <h6>測試測試測試測2</h6>
+          </ui-list-item>
+          <ui-list-item>
+            <a :href="testLink" target="_blank" style="color:white">Test Link</a>
+          </ui-list-item>
+          <ui-list-item>
+            <a :href="testLink" target="_blank" style="color:white">Test Link</a>
+          </ui-list-item>
+          <ui-list-item>
+            <a :href="testLink" target="_blank" style="color:white">Test Link</a>
+          </ui-list-item>
+          <ui-list-item>
+            <a :href="testLink" target="_blank" style="color:white">Test Link</a>
+          </ui-list-item>
+           <ui-list-item>
+             <a :href="testLink" target="_blank" style="color:white">Test Link</a>
+           </ui-list-item>
+          
+        </ui-list-container>
+        
+        <!-- end of list -->
+
+        <!-- Breadcrumb -->
+        <h3 class="ui-title">Breadcrumb </h3>
+        <ui-layout-breadcrumb></ui-layout-breadcrumb>
+        <!-- end of Breadcrumb -->
+        <!-- select -->
+        <h3 class="ui-title">Select </h3>
+        <p>父層：被選中的數值：{{selected}}</p>
+        <div class="bg-color-main space-md-top-down">
+          <h6 class="ui-title--white">預設樣式：一般下拉選單</h6>
+          <div class="ui-page-select">
+            <ui-form-select :value.sync="selected">
+            </ui-form-select>
+          </div>
+          <h6 class="ui-title--white">沒有預設選項 - is-show-default-option</h6>
+          <div class="ui-page-select">
+            <ui-form-select :options="options1" :value.sync="selected1" :is-show-default-option="false" >
+            </ui-form-select>
+          </div>
+
+          <h6 class="ui-title--white">選了預設選項不見 - is-seleted-hide-default-option</h6>
+          <div class="ui-page-select">
+            <ui-form-select :options="options1" :value.sync="selected2" :is-show-default-option.sync="isSelect2ShowOption" :is-seleted-hide-default-option="true" @on-click-option="selectClick(selected2)">
+            </ui-form-select>
+          </div>
+        </div>
+
+        <h6 class="ui-title--white">樣式2：type = style2</h6>
+          <div class="ui-page-select">
+            <ui-form-select :value.sync="selected" type="style2">
+            </ui-form-select>
+          </div>
+
+        <h6 class="ui-title--white">樣式2：type = style2</h6>
+        <div class="ui-page-select">
+          <ui-form-select :value.sync="selected" type="style2" default-text="請選擇">
+          </ui-form-select>
+        </div>
+        
+        
+        <!-- end of select -->
+
+
         <!-- modal -->
         <h3 class="ui-title">Modal </h3>
         <button @click="isModalBasicOpen = true">開Modal</button>
@@ -40,6 +149,39 @@
           </template>
         </ui-modal-basic>
         <!-- end of modal -->
+        <!-- accordion -->
+        <h3 class="ui-title">收合 accordion</h3>
+        <ui-accordion class="accordion-block" :activeIndex="1">
+          <ui-accordion-item @on-btn-click="onClickAccordion">
+            <template v-slot:trigger>
+              收合標題收合標題1
+            </template>
+            <template v-slot:content>
+              收合內容收合內容收合內容<br/>
+              收合內容收合內容收合內容<br/>
+              收合內容收合內容收合內容<br/>
+              收合內容收合內容收合內容<br/>
+              收合內容收合內容收合內容<br/>
+              收合內容收合內容收合內容<br/>
+            </template>
+          </ui-accordion-item>
+          <ui-accordion-item >
+            <template v-slot:trigger>
+              收合標題收合標題2
+            </template>
+            <template v-slot:content>
+              收合內容收合內容收合內容<br/>
+              收合內容收合內容收合內容<br/>
+              收合內容收合內容收合內容<br/>
+              收合內容收合內容收合內容<br/>
+              收合內容收合內容收合內容<br/>
+              收合內容收合內容收合內容<br/>
+            </template>
+          </ui-accordion-item>
+        </ui-accordion>
+        
+        <!-- end of accordion -->
+
         <!-- collapse -->
         <h3 class="ui-title">收合 </h3>
         <ui-collapse :is-collapse="true">
@@ -282,6 +424,12 @@ import tTd from './components/ui/TableTd';
 import tTr from './components/ui/TableTr';
 import UiCollapse from './components/effect/collapse';
 import UiModalBasic from './components/ui/ui-modal-basic';
+import UiFormSelect from './components/ui/ui-form-select';
+import UiAccordion from './components/effect/ui-accordion';
+import UiAccordionItem from './components/effect/ui-accordion-item';
+import UiLayoutBreadcrumb from './components/layout/ui-layout-breadcrumb';
+import uiListContainer from './components/ui/ui-list-container';
+import uiListItem from './components/ui/ui-list-item';
 
 export default {
   name: 'App',
@@ -292,14 +440,36 @@ export default {
     tTd,
     tTr,
     UiCollapse,
-    UiModalBasic
+    UiModalBasic,
+    UiFormSelect,
+    UiAccordion,
+    UiAccordionItem,
+    UiLayoutBreadcrumb,
+    uiListContainer,
+    uiListItem
   },
   data: function(){
     return {
       connection: null,
       inputVal: '',
       dataFromServer: 'test',
-      isModalBasicOpen: true
+      isModalBasicOpen: false,
+      selected: '1',
+      selected1: 'item1',
+      isSelect2ShowOption: true,
+      selected2: 'default',
+      options1: [
+        {
+          value: 'item1',
+          name: '第一個'
+        },
+        {
+          value: 'item2',
+          name: '第2個'
+        }
+      ],
+      testLink: 'https://www.google.com.tw',
+      listTitle: ['測試標題1', '測試標題2', '測試標題3', '測試標題4', '測試標題5', '測試標題6', '測試標題7' ]
     }
   },// end: data
   methods: {
@@ -316,10 +486,24 @@ export default {
     },
     onClickModalBtn(){
       this.isModalBasicOpen = false;
+    },
+    onClickAccordion(){
+      console.log('onClickAccordion');
+    },
+    selectClick(val){
+      // var _self = this;
+      console.log('on select click', val);
+      setTimeout(() =>{
+        this.selected2 = 'default';
+        console.log('this.selected2 ', this.selected2 );
+      },500);
+      
     }
   },
   created: function(){
+    
     var _self = this;
+    
     // this.connection = new WebSocket("wss://echo.websocket.org")
     this.connection = new WebSocket("ws://192.168.50.145:3000");
     // this.connection = new WebSocket("ws://localhost:3000");

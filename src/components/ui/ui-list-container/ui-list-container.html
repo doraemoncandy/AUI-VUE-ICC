@@ -1,0 +1,26 @@
+
+<div class="ui-list-container" ref="parent">
+  <!-- get the real template -->
+  <div ref="listContainer" v-show="false">
+    <slot></slot>
+  </div>
+  <!-- end of get the real template -->
+
+  <!-- actual show block -->
+  <div class="list-container-show-block" :class="'split--'+column">
+    <ul class="list-block" v-if="childEle && title" >
+      <li class="list-li-block" v-for="(item, index) of childEle" :key="index" 
+          :style=" (isOrder && (column >1) ) ? {
+            order: ( (index +1) <= ((childEle.length + (childEle.length % 2))/2) ) ? (1 + 2*index) : (2 + 2 * (( index - (childEle.length + (childEle.length % 2)) /2 ) ) ) }: ''">
+        <div class="item-title">
+          {{title[index]}}  
+        </div>
+        <div class="item-content" v-html="item.innerHTML"></div>
+      </li>
+    </ul>
+  </div>
+  <!-- end of actual show block -->
+
+  
+</div>
+

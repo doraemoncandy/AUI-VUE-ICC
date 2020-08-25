@@ -1,0 +1,68 @@
+@import 'helper/variables';
+$config-list-container:(
+    color-item-odd: #2e3037,
+    color-item-even: #2b2c33,
+    color-text-main: #a6adae,
+    color-text-sub: $color-white,
+    item-font-size: $font-size-h7,
+    width-title: 170px,
+    width-title-sm: 50%
+);
+.ui-list-container {
+    // show-block
+    .list-container-show-block{
+        .list-block{
+            padding-left: 0;
+            list-style-type: none;
+            text-align: left;
+            
+        } // end: list-block
+        .list-li-block{
+            display: flex;
+            align-items: center;
+            min-height: 56px;
+            &:nth-of-type(odd){
+                background-color: map-get($config-list-container, color-item-odd);
+            }
+            &:nth-of-type(even){
+                background-color: map-get($config-list-container, color-item-even);
+            }
+            
+            .item-title{
+                width: map-get($config-list-container, width-title);
+                padding-right: 20px;
+                flex: 0 0 map-get($config-list-container, width-title);
+                display: flex;
+                align-items: center;
+                word-break: break-word;
+            }
+            .item-content{
+                padding-left: 60px;
+                display: flex;
+                align-items: center;
+                word-break: break-word;
+                box-sizing: border-box;
+            }
+        }
+        // diff col
+        &.split--2{
+            .list-block{
+                display: flex;
+                width: 100%;
+                flex: 0 1 100%;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            .list-li-block{
+                width: calc(50% - 30px);
+                @media(max-width: $screen-sm-than-pc){
+                    // width: calc(50% - 15px);
+                    width: 100%;
+                }
+                @media(max-width: $screen-sm-than-pad){
+                    width: 100%;
+                }
+            } // end: list-li-block
+        } // end: split--2
+    } // end: .list-container-show-block
+}
