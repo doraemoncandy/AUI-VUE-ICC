@@ -1,0 +1,57 @@
+@import 'helper/variables';
+$conifg-switch:(
+    border-color: #6B6A6B,
+    color: $color-white,
+    font-size: $font-size-h7,
+    height: 35px,
+    color-hover-bg: $color-sub-light3
+);
+.ui-switch-btn {
+    .switch-btn-block{
+        padding: 0;
+        list-style-type: none;
+        text-align: left;
+        display: inline-flex;
+        width: 100%;
+        .switch-btn{
+            min-width: 120px;
+            flex: 0 0 120px;
+            border: 1px solid map-get($conifg-switch, border-color);
+            min-height: map-get($conifg-switch, height);
+            @media(max-width: $screen-sm-than-pad){
+                flex: 1 1 auto;
+                min-width: auto;
+            }
+            + .switch-btn{
+                border-left: none;
+            }
+            .switch-text{
+                padding: 5px 10px;
+                color: map-get($conifg-switch, color);
+                text-decoration: none;
+                font-size: map-get($conifg-switch, font-size);
+                height: 100%;
+                display: flex;
+                width: 100%;
+                box-sizing: border-box;
+                align-items: center;
+                justify-content: center;
+                transition: all .5s;
+                &:hover{
+                    background-color: map-get($conifg-switch, color-hover-bg);
+                }
+            } // end: switch-text
+
+            &.active{
+                border: 1px solid map-get($conifg-switch, color-hover-bg);
+                + .switch-btn{
+                    border-left: none;
+                }
+                .switch-text{
+                    background-color: map-get($conifg-switch, color-hover-bg);
+                   
+                }
+            } // end: active
+        }
+    } // end: switch-btn-block
+}

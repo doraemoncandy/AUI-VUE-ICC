@@ -1,5 +1,5 @@
 import Vue from 'vue';
-
+//export default
 Vue.directive('click-outside', {
   bind(el,binding, vnode) {
     el.clickOutsideEvent = function (event) {

@@ -1,0 +1,7 @@
+@function map-deep-get($map, $keys...) {
+    @debug 'in map' + #{$map};
+    @each $key in $keys {
+        $map: map-get($map, $key);
+    }
+    @return $map;
+}

@@ -1,0 +1,8 @@
+
+<div class="ui-form-item style--input" :class="{'style--has-title': title,'style--required':isRequired}">
+  <label :for="privateId" v-show="title" class="form-title">{{title}}</label>
+  <div class="ui-form-el ui-form-input" :class="{'style--error':isError, 'style--disable':isDisable}">
+    <input :type="type" :id="privateId" :placeholder="placeholder" v-model="privateValue">
+  </div>
+</div>
+

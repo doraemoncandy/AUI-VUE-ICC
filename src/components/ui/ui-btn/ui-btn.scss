@@ -1,0 +1,78 @@
+@import 'helper/variables';
+@import 'helper/function';
+$config-btn: (
+    height: 34px,
+    font-size: $font-size-h7,
+    radius: 17px
+
+);
+$config-btn-theme:(
+    main: (
+        color: $color-white,
+        hover-color: $color-sub-light2
+    ),
+    disable:(
+        color: $color-disable,
+        hover-color: $color-disable
+    )
+);
+$config-btn-wd:(
+    lg:(
+        pc: 180px,
+        mb: 120px,
+    ),
+    md:(
+        pc: 135px,
+        mb: 120px,
+    ),
+    sm:(
+        pc: 120px,
+        mb: 120px
+    )
+);
+
+.ui-btn {
+    text-decoration: none;
+    color: $color-white;
+    font-size: map-get($config-btn, font-size);
+    min-height: map-get($config-btn, height);
+    line-height: map-get($config-btn, height);
+    border-style: solid;
+    border-width: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    border-radius: map-get($config-btn, radius);
+    transition: all 0.5s;
+    padding: 0 10px;
+    box-sizing: border-box;
+    /* btn style */
+    @each $btn-color-name,
+    $attr in $config-btn-theme {
+        &.style--#{$btn-color-name} {
+            color: map-deep-get($config-btn-theme , $btn-color-name, color);
+            &:hover{
+                border-color: map-deep-get($config-btn-theme , $btn-color-name, hover-color);
+                color: map-deep-get($config-btn-theme , $btn-color-name, hover-color);
+            }
+
+            @if($btn-color-name == 'disable'){
+                pointer-events: none;
+            }
+        } // end:  btn
+    } //end: each
+
+
+    /* btn wd */
+    @each $btn-wd-name, $attr in $config-btn-wd{
+        &.wd--#{$btn-wd-name}{
+            max-width: map-deep-get($config-btn-wd, $btn-wd-name, pc);
+            @media(max-width: $screen-sm-than-pad){
+                max-width: map-deep-get($config-btn-wd, $btn-wd-name, mb);
+            } // end: media
+        } // end: wd
+    } // end: each
+}
+
+

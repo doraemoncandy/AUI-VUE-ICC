@@ -1,0 +1,16 @@
+<div class="ui-form-file-item" :class="{'style--error':isError, 'style--disable':isDisable}">
+  <label :for="privateId" class=" ui-form-item style--file ui-form-file " :class="{'style--has-title': title,'style--required':isRequired}">
+    <span class="form-title"  v-show="title">{{title}}</span>
+    <div class="customize-block ui-form-el" >
+      <span class="file-name-block">{{fileName}}</span>
+      <span class="file-btn">
+        <ui-btn @onClick="clickBtn"></ui-btn>
+      </span>
+    </div>
+  </label>
+  <div class="ui-form-native">
+    <input type="file" :id="privateId" ref="fileInput" :placeholder="placeholder" @change="onChangeFile($event)" >
+  </div>
+</div>
+
+

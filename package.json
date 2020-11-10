@@ -9,10 +9,13 @@
     "build-all": "webpack"
   },
   "dependencies": {
+    "chart.js": "^2.9.3",
     "core-js": "^3.6.5",
     "express": "^4.17.1",
     "vue": "^2.6.11",
+    "vue-chartjs": "^3.5.0",
     "vue-cli": "^2.9.6",
+    "vue-uuid": "^2.0.2",
     "vuescroll": "^4.15.1",
     "ws": "^7.3.0"
   },
@@ -25,7 +28,8 @@
     "eslint-plugin-vue": "^6.2.2",
     "node-sass": "^4.14.1",
     "sass-loader": "^8.0.2",
-    "vue-template-compiler": "^2.6.11",
+    "vue-template-compiler": "^2.6.12",
+    "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
   },
   "eslintConfig": {

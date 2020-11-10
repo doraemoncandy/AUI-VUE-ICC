@@ -1,0 +1,84 @@
+@import "helper/variables";
+@import "helper/function";
+@import "components/form";
+
+$color-check: #00ffff;
+
+$config-checkbox:(
+    color: $color-check,
+    size: 15px,
+    space-text-icon: 15px,
+    border-wd: 1px
+);
+
+
+.ui-form-checkbox {
+    // native checkbox
+    .native-checkbox{
+        display: none;
+    }
+
+   
+    .ui-checkbox-block{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: flex-start;
+        
+    }
+
+    // cutomize checkbox
+    .check-box-block{
+        position: relative;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+        width: map-get($config-checkbox, size);
+        height: map-get($config-checkbox, size);
+        display: inline-block;
+        position: relative;
+        vertical-align: middle;
+        margin-top: 4px;
+        font-size: 0;
+        cursor: pointer;
+        margin-right: map-get($config-checkbox, space-text-icon);
+        border: map-get($config-checkbox, border-wd) solid $color-white;
+        &.active{
+            border-color: $color-check;
+            &:after{
+                content: "";
+                display: block;
+                position: absolute;
+                top: -10px;
+                left: 8px;
+                width: 7px;
+                height: 18px;
+                border: solid $color-check;
+                border-width: 0 2px 2px 0;
+                -webkit-transform: rotate(45deg);
+                transform: rotate(45deg);
+            } // end; icon
+        }// end: active
+    }
+    .check-text{
+        display: inline-block;
+        width: calc(100% - #{map-get($config-checkbox, size)} - #{map-get($config-checkbox, space-text-icon)} - #{map-get($config-checkbox, border-wd)} * 2);
+        text-align: left;
+        font-size: map-get($config-form, font-size);
+    }
+
+    &.style--required{
+        .form-text{
+            position: relative;
+            padding-left: 2px;
+            box-sizing: border-box;
+            &:before{
+                content: '*';
+                display: inline-block;
+                font-size: $font-size-h9;
+                position: absolute;
+                top: -1px;
+                left: -7px;
+                color: map-get($config-form, color-required);
+            }
+        }
+    } // end: style--required
+}

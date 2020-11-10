@@ -1,0 +1,37 @@
+@import "helper/variables";
+@import "helper/function";
+@import "components/form";
+
+
+.ui-form-input {
+    max-width: map-get($config-form, max-width);
+    @media(max-width: $screen-sm-than-pad){
+        max-width: 100%;
+    } // end: media
+    input{
+        border: none;
+        height: map-get($config-form, height);
+        padding: 0 map-get($config-form, space);
+        width: 100%;
+        @include form-basic;
+    } // end: input
+    @each $theme-name, $val in $config-form-theme{
+        
+        &.style--#{$theme-name}{
+            input{
+                border-color: $val;
+                @if($theme-name == 'disable'){
+                    border: none;
+                    pointer-events: none;
+                } // end: if
+            } // end: input
+        } // end: style
+    } // end: each
+
+    &.wd--full{
+        width: 100%;
+    }
+
+
+}
+

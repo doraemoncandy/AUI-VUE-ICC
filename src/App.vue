@@ -2,22 +2,31 @@
 html, body{
   margin: 0;
   padding: 0;
+  font-size: 16px;
+}
+.ui-page .chart-block{
+  display: inline-block;
+  width: 500px;
+  height: 500px;
+}
+.chart-block .chart{
+  height: 100%;
 }
 </style>
 <template>
   <div id="app" class="ui-page">
     <div class="title-block">
-      <h2>WebSocket Test Page</h2>
+      <h2>UI WebSocket Test Page</h2>
     </div>
 
     
     <!-- temp button -->
-    <div class="websocket-block">
+    <!--<div class="websocket-block">
       <input type="text" v-model="inputVal"/>
       <button @click="sendMessage(inputVal)">send msg</button>
       <button @click="disconnet()">disconnect</button>
       <h5>Data From Server: {{ dataFromServer }}</h5>
-    </div>
+    </div>-->
     <!-- end of temp button -->
 
 
@@ -34,6 +43,81 @@ html, body{
     </div> -->
     <!-- end of sidebar -->
     <div class="ui-layout-content bg-color-main">
+        <h3 class="ui-title">Line Chart</h3>
+        <div class="chart-block">
+          <line-chart class="chart" :chart-data="chartData" :options="chartOption"></line-chart>
+        </div>
+        <h3 class="ui-title">Switch Button</h3>
+        <ui-switch-btn></ui-switch-btn>
+
+        <h3 class="ui-title">File </h3>
+        <ui-form-file></ui-form-file>
+
+        <h6 class="ui-title--white">有標題</h6>
+        <ui-form-file title="選擇檔案" :is-required="true" @onChangeFile="fileChange($event)"></ui-form-file>
+
+        <h6 class="ui-title--white">Error</h6>
+        <ui-form-file title="選擇檔案" :is-required="true" :is-error="true"></ui-form-file>
+
+        <h3 class="ui-title">Checkbox </h3>
+        <h6 class="ui-title--white">一般的checkbox</h6>
+        <ui-form-checkbox :is-checked.sync="isCheck">測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字</ui-form-checkbox>
+        <p>isChecked: {{isCheck}} </p>
+        <h6 class="ui-title--white">一般的checkbox</h6>
+        <ui-form-checkbox :is-required="true" :is-checked.sync="isCheck2">測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試</ui-form-checkbox>
+        <p>isChecked: {{isCheck2}} </p>
+
+        <h6 class="ui-title--white">自己給id</h6>
+        <ui-form-checkbox id="checkid" :is-checked.sync="isCheck3">測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字</ui-form-checkbox>
+        <p>isChecked: {{isCheck}} </p>
+
+        <h3 class="ui-title">Textarea </h3>
+        <h6 class="ui-title--white">有值的Textarea</h6>
+        <ui-form-textarea title="標題" :is-required="true"></ui-form-textarea>
+
+         
+
+        <h6 class="ui-title--white">placeholder</h6>
+        <ui-form-textarea placeholder="示範文字"></ui-form-textarea>
+        <h6 class="ui-title--white">style: error</h6>
+        <ui-form-textarea :is-error="true" :value.sync="inputValue1"></ui-form-textarea>
+        <p>value: {{inputValue1}} </p>
+        <h6 class="ui-title--white">style: disable</h6>
+        <ui-form-textarea :is-disable="true" :value.sync="inputValue1"></ui-form-textarea>
+
+        <!-- button -->
+        <h3 class="ui-title">Input </h3>
+        <h6 class="ui-title--white">有標題的Input</h6>
+        <ui-form-input value="test" title="標題" :is-required="true"></ui-form-input>
+
+        <h6 class="ui-title--white">有值的Input</h6>
+        <ui-form-input value="test"></ui-form-input>
+
+        <h6 class="ui-title--white">placeholder</h6>
+        <ui-form-input placeholder="請輸入文字"></ui-form-input>
+
+        <h6 class="ui-title--white">style: error</h6>
+        <ui-form-input :isError="true" :value="inputValue1"></ui-form-input>
+
+        <h6 class="ui-title--white">style: disable</h6>
+        <ui-form-input :isDisable="true" :value="inputValue2"></ui-form-input>
+        <!-- end of  button -->
+
+
+        <!-- button -->
+        <h3 class="ui-title">Button </h3>
+        <ui-btn text="按鈕文字" @onClick="clickBtn()"></ui-btn>
+        <!-- end of  button -->
+
+
+        <!-- button -->
+        <h3 class="ui-title">Button width btn-layout</h3>
+        <ui-btn-layout>
+          <ui-btn text="不可點擊的按鈕" theme="disable" @onClick="clickBtn()"></ui-btn>
+          <ui-btn text="另開一頁" :isOpenOther="true" link="http://www.google.com.tw"></ui-btn>
+          <ui-btn link="http://www.google.com.tw" text="按鈕文字2按鈕文字1按鈕文字1按鈕文字1按鈕文字1" wd="lg" @onClick="clickBtn()"></ui-btn>
+        </ui-btn-layout>
+        <!-- end of  button -->
 
         <!-- list -->
         <h3 class="ui-title">List </h3>
@@ -128,6 +212,10 @@ html, body{
           <ui-form-select :value.sync="selected" type="style2" default-text="請選擇">
           </ui-form-select>
         </div>
+
+        <h6 class="ui-title--white">樣式2：type = style2</h6>
+          <ui-form-select title="下拉選單標題" :is-required="true" :value.sync="selected" type="style2" default-text="請選擇">
+          </ui-form-select>
         
         
         <!-- end of select -->
@@ -416,131 +504,7 @@ html, body{
   </div>
 </template>
 
-<script>
-// import HelloWorld from './components/HelloWorld.vue';
-import tTable from './components/ui/Table';
-import tTh from './components/ui/TableTh';
-import tTd from './components/ui/TableTd';
-import tTr from './components/ui/TableTr';
-import UiCollapse from './components/effect/collapse';
-import UiModalBasic from './components/ui/ui-modal-basic';
-import UiFormSelect from './components/ui/ui-form-select';
-import UiAccordion from './components/effect/ui-accordion';
-import UiAccordionItem from './components/effect/ui-accordion-item';
-import UiLayoutBreadcrumb from './components/layout/ui-layout-breadcrumb';
-import uiListContainer from './components/ui/ui-list-container';
-import uiListItem from './components/ui/ui-list-item';
-
-export default {
-  name: 'App',
-  components: {
-    // HelloWorld,
-    tTable,
-    tTh,
-    tTd,
-    tTr,
-    UiCollapse,
-    UiModalBasic,
-    UiFormSelect,
-    UiAccordion,
-    UiAccordionItem,
-    UiLayoutBreadcrumb,
-    uiListContainer,
-    uiListItem
-  },
-  data: function(){
-    return {
-      connection: null,
-      inputVal: '',
-      dataFromServer: 'test',
-      isModalBasicOpen: false,
-      selected: '1',
-      selected1: 'item1',
-      isSelect2ShowOption: true,
-      selected2: 'default',
-      options1: [
-        {
-          value: 'item1',
-          name: '第一個'
-        },
-        {
-          value: 'item2',
-          name: '第2個'
-        }
-      ],
-      testLink: 'https://www.google.com.tw',
-      listTitle: ['測試標題1', '測試標題2', '測試標題3', '測試標題4', '測試標題5', '測試標題6', '測試標題7' ]
-    }
-  },// end: data
-  methods: {
-    sendMessage: function sendMessage(message) {
-      console.log(this.connection);
-      this.connection.send(message);
-    },
-    disconnet: function disconnet(){
-      console.log('in disconnect');
-      this.connection.close();
-    },
-    onIsOpenChange(val){
-      this.isModalBasicOpen = val;
-    },
-    onClickModalBtn(){
-      this.isModalBasicOpen = false;
-    },
-    onClickAccordion(){
-      console.log('onClickAccordion');
-    },
-    selectClick(val){
-      // var _self = this;
-      console.log('on select click', val);
-      setTimeout(() =>{
-        this.selected2 = 'default';
-        console.log('this.selected2 ', this.selected2 );
-      },500);
-      
-    }
-  },
-  created: function(){
-    
-    var _self = this;
-    
-    // this.connection = new WebSocket("wss://echo.websocket.org")
-    this.connection = new WebSocket("ws://192.168.50.145:3000");
-    // this.connection = new WebSocket("ws://localhost:3000");
-    
-    // 連接建立時
-    this.connection.onopen = function(event){
-      console.log(event)
-      console.log("Successfully connected to the echo websocket server...")
-    }
-
-    // client 收到 server時
-    this.connection.onmessage = function(event) {
-      console.log('==== on msg ====');
-      console.log(event);
-      console.log('data:', event.data);
-      _self.dataFromServer = event.data;
-      console.log('data from server', _self.dataFromServer);
-    }
-
-    // 通訊發生錯誤的時候
-    this.connection.error = function(event){
-      console.log('==== on error ====');
-      console.log(event);
-    }
-
-    // 通訊關閉的時候
-    this.connection.close = function(){
-      console.log('=== on close ===' + this.readyState);
-    }
-
-    // 
-  } // end: create
-  
-
-}
-
-</script>
+<script src="./app.js"></script>
 
 <style lang="scss">
 // component scss

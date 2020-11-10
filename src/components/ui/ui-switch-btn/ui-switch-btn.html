@@ -1,0 +1,9 @@
+
+<div class="ui-switch-btn">
+  <ul class="switch-btn-block">
+    <li class="switch-btn" v-for="(item, index) in datas" :class="{'active': actvieIndex === index}">
+      <a :href="item.link" class="switch-text" @click="onClick(index)">{{item.text}}</a>
+    </li>
+  </ul>
+</div>
+

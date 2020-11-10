@@ -1,0 +1,18 @@
+@import 'helper/variables';
+.ui-btn-layout {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    .ui-btn +{
+        .ui-btn{
+            margin-left: 30px;
+        }
+
+        @media(max-width: $screen-sm-than-pad){
+            .ui-btn{
+                margin-left: 10px;
+            }
+        } //end: media
+    } // end: ui-btn
+}

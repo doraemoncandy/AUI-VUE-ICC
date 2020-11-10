@@ -1,12 +1,16 @@
 
  import '../../../directive/click-outside.directive';
+ import uiFormMixin from '../../../common-behavior/mixin-form';
 // import clickOutside from '../../../directive/click-outside.directive';
 
   
 export default {
   name: 'ui-form-select',
   // directive: [clickOutside],
-  components: {},
+  components: {
+    
+  },
+  mixins: [uiFormMixin],
   props: {
     value: {
       default: 'default' //下拉選單選擇的值

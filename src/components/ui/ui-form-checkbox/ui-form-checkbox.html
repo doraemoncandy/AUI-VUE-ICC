@@ -1,0 +1,9 @@
+
+<div class="ui-form-checkbox" :class="{'style--required': isRequired}">
+  <label :for="privateId" class="ui-checkbox-block">
+    <span class="check-box-block" :class="{'active': privateIsChecked}"></span>
+    <span class="form-text check-text"><slot></slot></span>
+  </label>
+  <input class="native-checkbox" :id="privateId" type="checkbox" v-model="privateIsChecked">
+</div>
+

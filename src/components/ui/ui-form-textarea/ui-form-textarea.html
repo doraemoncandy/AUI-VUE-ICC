@@ -1,0 +1,6 @@
+<div class="ui-form-item style--textarea" :class="{'style--has-title': title, 'style--required':isRequired}">
+  <label :for="privateId" v-show="title" class="form-title">{{title}}</label>
+  <div class="ui-form-el ui-form-textarea" :class="{'style--error':isError, 'style--disable':isDisable}">
+    <textarea :id="privateId" v-model="privateValue" :placeholder="placeholder"></textarea>
+  </div>
+</div>
