@@ -17,7 +17,7 @@
     "vue-cli": "^2.9.6",
     "vue-uuid": "^2.0.2",
     "vuescroll": "^4.15.1",
-    "ws": "^7.3.0"
+    "ws": "^7.4.6"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.4.0",
