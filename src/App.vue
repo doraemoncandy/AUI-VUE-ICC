@@ -286,6 +286,37 @@ html, body{
           </template>
         </ui-collapse>
         <!-- end of collapse -->
+        <!-- collapse -->
+        <h3 class="ui-title">收合 min height </h3>
+        <ui-collapse :is-collapse="false" :min-height="50">
+          <template v-slot:trigger>
+            收合標題收合標題
+          </template>
+          <template v-slot:content>
+            收合內容收合內容收合內容<br/>
+            收合內容收合內容收合內容<br/>
+            收合內容收合內容收合內容<br/>
+            收合內容收合內容收合內容<br/>
+            收合內容收合內容收合內容<br/>
+            收合內容收合內容收合內容<br/>
+          </template>
+        </ui-collapse>
+
+        <h3 class="ui-title">收合 min height true </h3>
+        <ui-collapse :is-collapse="true" :min-height="30">
+          <template v-slot:trigger>
+            收合標題收合標題20
+          </template>
+          <template v-slot:content>
+            收合內容收合內容收合內容<br/>
+            收合內容收合內容收合內容<br/>
+            收合內容收合內容收合內容<br/>
+            收合內容收合內容收合內容<br/>
+            收合內容收合內容收合內容<br/>
+            收合內容收合內容收合內容<br/>
+          </template>
+        </ui-collapse>
+        <!-- end of collapse -->
         <!-- table Layout-->
         <h3 class="ui-title">Table: 上下標題，小版滑動 </h3>
         <h5 class="ui-title--sub">STYLE00 - 藍線</h5>

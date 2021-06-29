@@ -1,18 +1,12 @@
-
-<div class="cp-collapse" :class="isOpen ? 'active': ''">
-  <div class="collapse-trigger-block" @click="isOpen = !isOpen">
+<div class="cp-collapse" :class="[isOpen ? 'active': '', classMinHeightFirstInital ? 'style--initial-min-close': '']">
+  <div class="collapse-trigger-block" @click="onClickCollapse($event)">
     <slot name="trigger"></slot>
   </div>
-  <transition name="collapse" 
-    v-on:before-enter="beforeEnter"
-    v-on:enter="enter"
-    v-on:after-enter="afterEnter"
-    v-on:before-leave="beforeLeave"
-    v-on:leave="leave"
-    v-on:after-leave="afterLeave">
-    <div v-show="isOpen" class="collapse-content-block">
+  <transition name="collapse" v-on:before-enter="beforeEnter" v-on:enter="enter" v-on:after-enter="afterEnter"
+    v-on:before-leave="beforeLeave" v-on:leave="leave" v-on:after-leave="afterLeave">
+
+    <div ref="content" v-show="isOpen" class="collapse-content-block">
       <slot name="content"></slot>
     </div>
   </transition>
 </div>
-

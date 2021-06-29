@@ -8,4 +8,9 @@
         }
         
     }
+    .collapse-content-block{
+        transition: height .3s linear;
+        overflow: hidden;
+        
+    }
 }
